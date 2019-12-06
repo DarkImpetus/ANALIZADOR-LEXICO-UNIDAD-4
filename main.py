@@ -160,3 +160,57 @@ def t_MAYORIZQ(t):
     r'>>'
     return t
 
+
+def t_DISTINTO(t):
+    r'!='
+    return t
+
+
+def t_newline(t):
+    r'\n+'
+    t.lexer.lineno += len(t.value)
+
+t_ignore = ' \t'
+
+def t_error(t):
+    global resultado_lexema
+    estado = "** Token no valido en la Linea {:4} Valor {:4}".format(str(t.lineno), str(t.value)
+                                                                      )
+    resultado_lexema.append(estado)
+    t.lexer.skip(1)
+
+# Prueba de ingreso
+
+def prueba(data):
+    global resultado_lexema
+
+    analizador = lex.lex()
+    analizador.input(data)
+    while True:
+        tok = analizador.token()
+        if not tok:
+            break
+        # print("lexema de "+tok.type+" valor "+tok.value+" linea "tok.lineno)
+        estado = "Linea {:4} Tipo {:4} Valor {:4}".format(
+            str(tok.lineno), str(tok.type), str(tok.value))
+        resultado_lexema.append(estado)
+
+    return resultado_lexema
+
+# abrir archivo
+analizador = lex.lex()
+path = "doragon.py"
+
+try:
+    archivo = open(path, 'r')
+except:
+    print("el archivo no se encontro")
+    quit()
+
+text = ""
+for linea in archivo:
+    text += linea
+prueba(text)
+print('\nBienvenido al analizador lexico de python\n')
+print('Analizando el archivo "doragon.py"\n\n')
+print('\n'.join(list(map(''.join, resultado_lexema)))) #AL IMPRIMIR LOS DATOS, ESTO LO ORDENA UNA LISTA
