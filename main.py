@@ -50,3 +50,59 @@ t_CORDER = r'\]'
 t_LLAIZQ = r'{'
 t_LLADER = r'}'
 
+def t_GLOBAL(t):
+    r'global'
+    return t
+
+def t_INICIOBLOQUE(t):
+    r':'
+    return t
+
+def t_INTENTAR(t):
+    r'try'
+    return t
+
+def t_EXCEPCION(t):
+    r'except'
+    return t
+
+def t_DEFINIR(t):
+    r'def'
+    return t
+
+def t_DECIMAL(t):
+    r'([0-9][.]]?[0-9]+)'
+    return t
+
+def t_SINO(t):
+    r'else'
+    return t
+
+
+def t_SI(t):
+    r'if'
+    return t
+
+def t_EN(t):
+    r'in'
+    return t
+
+
+def t_RETURN(t):
+    r'return'
+    return t
+
+
+def t_VOID(t):
+    r'void'
+    return t
+
+
+def t_MIENTRAS(t):
+    r'while'
+    return t
+
+
+def t_PARA(t):
+    r'for'
+    return t
