@@ -106,3 +106,57 @@ def t_MIENTRAS(t):
 def t_PARA(t):
     r'for'
     return t
+
+
+def t_ENTERO(t):
+    r'\d+'
+    t.value = int(t.value)
+    return t
+
+
+def t_IDENTIFICADOR(t):
+    r'\w+(_\d\w)*'
+    return t
+
+
+def t_CADENA(t):
+    r'[\"]+(\w+ \ *\w*\d* \ *)[\"]+'
+    return t
+
+
+def t_SIGNOCOMENTARIO(t):
+    r'\#'
+    return t
+
+def t_COMENTARIO(t):
+    r'[\#][a-z0-9A-Z ]+'
+
+def t_PLUSPLUS(t):
+    r'\+\+'
+    return t
+
+
+def t_MENORIGUAL(t):
+    r'<='
+    return t
+
+
+def t_MAYORIGUAL(t):
+    r'>='
+    return t
+
+
+def t_IGUAL(t):
+    r'=='
+    return t
+
+
+def t_MAYORDER(t):
+    r'<<'
+    return t
+
+
+def t_MAYORIZQ(t):
+    r'>>'
+    return t
+
